@@ -50,3 +50,16 @@ window.onload = async () => {
         console.error("THE WEIGHT OF YOUR SINS INCREASES", error);
     };
 };
+
+setInterval( async () => {
+    try{
+        const response = await fetch("/api/posts");
+        const posts = await response.json();
+        document.getElementById("feed").innerHTML = "";
+        posts.forEach((post) => {
+            renderPost(post);
+        });
+    } catch (error) {
+        console.error("DELUSION IS NOT ILLUSION, TIME IS FALLING APART", error);
+    };
+}, 5000);
